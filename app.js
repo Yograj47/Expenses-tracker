@@ -8,13 +8,10 @@ const connectDB = require("./db/connection.js");
 
 // midddleware
 app.use(express.json());
+app.use(express.static('./frontend'));
 
 //routes
 app.use("/api/v1/expenses", routes);
-
-app.get("/", (req, res) => {
-  res.status(200).send("Home Page");
-});
 
 const start = async () => {
   try {

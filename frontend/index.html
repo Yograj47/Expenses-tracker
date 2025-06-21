@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Expense Tracker</title>
+    <script src="https://kit.fontawesome.com/a63c128ded.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="root">
+
+        <!-- ---header--- -->
+        <header class="header">
+            <div class="row-1">
+                <h1>Expense Tracker</h1>
+                <div class="toggle-btn">
+                    Dark mode
+                </div>
+            </div>
+            <div class="row-2">
+                <!-- ---I am not thinking about adding income so there is only expense--- -->
+                <span>Expense: Rs.90,000</span>
+                <div>
+                    <span><i class="fa-solid fa-arrow-up"></i></span>
+                    <span>%4</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="expenses-main-box">
+
+            <!-- ---add new expense form--- -->
+            <div class="add-new-expense">
+                <h2>Add New Expense</h2>
+                <form id="expense-form">
+                    <div>
+                        <label for="title">Title</label>
+                        <input type="text" id="title" name="title" required />
+                    </div>
+                    <div>
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" name="amount" required />
+                    </div>
+                    <div>
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="date">Date</label>
+                        <input type="date" id="date" name="date" required />
+                    </div>
+                    <button type="submit">Add Expense</button>
+                </form>
+            </div>
+
+            <!-- ---expense list and filters--- -->
+            <div class="list-expenses">
+                <div class="filter">
+                    <input type="text" placeholder="Search by title..." />
+                    <select>
+                        <option value="">Filter by Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <select>
+                        <option value="latest">Sort by Date (Latest)</option>
+                        <option value="oldest">Sort by Date (Oldest)</option>
+                    </select>
+                </div>
+
+                <div class="box">
+                    <h2>Transaction History</h2>
+                    <ul>
+                        <li>
+                            <div class="expense-item">
+                                <span class="title">Groceries</span>
+                                <span class="amount">Rs. 1200</span>
+                                <span class="category">Food</span>
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+                                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </li>
+                        <!-- Repeat li for more items -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ---charts section--- -->
+            <div class="diagrams">
+                <div class="pie-chart">
+                    <h3>Expenses by Category</h3>
+                    <!-- Pie chart canvas or SVG will go here -->
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="bar-chart">
+                    <h3>Monthly Trends</h3>
+                    <!-- Bar chart canvas or SVG will go here -->
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./script.js"></script>
+</html>
