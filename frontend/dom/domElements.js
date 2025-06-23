@@ -1,0 +1,13 @@
+export const title = document.getElementById("title");
+export const amount = document.getElementById("amount");
+export const category = document.getElementById("category");
+export const dateInput = document.getElementById("date");
+export const list = document.querySelector(".box table");
+export const addNewBtn = document.querySelector(".add-expense button");
+export const expenseBox = document.querySelector(".add-new-expense");
+export const closeBtn = document.querySelector(".close-btn");
+export const formTitle = document.getElementById("form-title");
+export const formBtn = document.getElementById("form-btn");
+export const expenseOfMonth = document.querySelector(".expenseOfMonth");
+export const dailyRate = document.querySelector(".dailyRate");
+export const icon = document.querySelector(".icon");

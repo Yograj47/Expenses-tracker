@@ -5,10 +5,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Expense Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a63c128ded.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+    
+    <!-- ===Expense form=== -->
+    <div class="add-new-expense close" id="expense-modal">
+        <div class="popup-content">
+            <div>
+                <h2 id="form-title"></h2>
+                <button id="close-btn" class="close-btn">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
+            <form id="expense-form">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" required/>
+                </div>
+                <div>
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" name="amount" required/>
+                </div>
+                <div>
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Utilities">Utilities</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="date">Date</label>
+                    <input type="date" id="date" name="date" required/>
+                </div>
+                <button id="form-btn" type="submit"></button>
+            </form>
+        </div>
+    </div>
+
     <div id="root">
 
         <!-- ---header--- -->
@@ -21,10 +60,10 @@
             </div>
             <div class="row-2">
                 <!-- ---I am not thinking about adding income so there is only expense--- -->
-                <span>Expense: Rs.90,000</span>
+                <span class="expenseOfMonth"></span>
                 <div>
-                    <span><i class="fa-solid fa-arrow-up"></i></span>
-                    <span>%4</span>
+                    <span><i class="icon"></i></span>
+                    <span class="dailyRate">%4</span>
                 </div>
             </div>
         </header>
@@ -32,34 +71,12 @@
         <div class="expenses-main-box">
 
             <!-- ---add new expense form--- -->
-            <div class="add-new-expense">
-                <h2>Add New Expense</h2>
-                <form id="expense-form">
-                    <div>
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" required />
-                    </div>
-                    <div>
-                        <label for="amount">Amount</label>
-                        <input type="number" id="amount" name="amount" required />
-                    </div>
-                    <div>
-                        <label for="category">Category</label>
-                        <select id="category" name="category">
-                            <option value="Food">Food</option>
-                            <option value="Transport">Transport</option>
-                            <option value="Utilities">Utilities</option>
-                            <option value="Others">Others</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="date">Date</label>
-                        <input type="date" id="date" name="date" required />
-                    </div>
-                    <button type="submit">Add Expense</button>
-                </form>
+            <div class="add-expense">
+                <button type="button">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>New Expense</span>
+                </button>
             </div>
-
             <!-- ---expense list and filters--- -->
             <div class="list-expenses">
                 <div class="filter">
@@ -79,18 +96,16 @@
 
                 <div class="box">
                     <h2>Transaction History</h2>
-                    <ul>
-                        <li>
-                            <div class="expense-item">
-                                <span class="title">Groceries</span>
-                                <span class="amount">Rs. 1200</span>
-                                <span class="category">Food</span>
-                                <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
-                                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
-                            </div>
-                        </li>
+                    <table>
                         <!-- Repeat li for more items -->
-                    </ul>
+                        <!-- <tr class="item">
+                            <td class="title">Test</td>
+                            <td class="amount">Rs. 1000</td>
+                            <td class="category">Food</td>
+                            <td><button class="edit-btn"><i class="fa-solid fa-pen"></i></button></td>
+                            <td><button class="delete-btn"><i class="fa-solid fa-trash"></i></button></td>
+                        </tr> -->
+                    </table>
                 </div>
             </div>
 
@@ -112,5 +127,6 @@
     </div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="./script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="./script.js"></script>
 </html>

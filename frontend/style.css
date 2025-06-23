@@ -1,0 +1,320 @@
+/* === Root Theme Variables === */
+
+:root {
+  --color-bg: #f8f8f8;
+  --color-text: #212529;
+  --color-secondary-text: #6c757d;
+  --color-accent: #298e42;
+  --color-accent-dark: #226d34;
+  --color-expense: #e74c3c;
+  --color-border: #868383;
+  --color-category-food: #1a68bc;
+  --color-category-transport: #f39c12;
+  --color-category-utilities: #9b59b6;
+  --shadow-elevated: 0 0 7px rgba(0, 0, 0, 0.3);
+}
+
+/* === Base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 1rem;
+  position: relative;
+}
+
+#root {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* === Header === */
+.header {
+  background-color: white;
+  padding: 1rem 2rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-elevated);
+}
+
+.header .row-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .row-2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.toggle-btn {
+  cursor: pointer;
+  background-color: var(--color-text);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+/* === Form Button === */
+.add-expense {
+  margin-bottom: 1rem;
+}
+
+.add-expense button {
+  background-color: var(--color-text);
+  border: none;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  display: flex;
+  gap: 10px;
+  padding: 0.25rem 0.75rem;
+  transition: background-color 0.3s ease;
+}
+
+.add-expense button:hover {
+  cursor: pointer;
+  background-color: var(--color-secondary-text);
+}
+
+/* === Popup Overlay === */
+.add-new-expense {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1.5rem;
+}
+
+.add-new-expense.close {
+  display: none;
+}
+
+/* === Popup Content === */
+.popup-content {
+  background-color: #fff;
+  width: 100%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow-elevated);
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content > div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* === Close Button === */
+.close-btn {
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.close-btn:hover {
+  color: var(--color-expense);
+}
+
+/* === Form Styling === */
+.popup-content form > div {
+  margin-bottom: 1.2rem;
+}
+
+.popup-content label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.popup-content input,
+.popup-content select {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fdfdfd;
+  transition: border 0.2s ease;
+}
+
+.popup-content input:focus,
+.popup-content select:focus {
+  border-color: var(--color-accent);
+  outline: none;
+}
+
+/* === Submit Button === */
+.popup-content button[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: var(--color-accent);
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.popup-content button[type="submit"]:hover {
+  background-color: var(--color-accent-dark);
+}
+
+/* === Fade In Animation === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === Expenses Section Wrapper === */
+.list-expenses {
+  background-color: white;
+  padding: 1.2rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow-elevated);
+  margin-bottom: 1.5rem;
+}
+
+/* === Filters === */
+.list-expenses .filter {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.list-expenses .filter input,
+.list-expenses .filter select {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* === Transaction History === */
+.list-expenses .box {
+  background-color: #fdfdfd;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-elevated);
+  overflow-x: auto; /* enables horizontal scroll on small screens */
+}
+
+.list-expenses .box h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+}
+
+/* === Table Styling === */
+.list-expenses table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.list-expenses th,
+.list-expenses td {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-expenses th {
+  background-color: #f1f1f1;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.list-expenses td.amount {
+  color: var(--color-expense);
+  font-weight: bold;
+}
+
+.list-expenses td.category {
+  font-weight: 500;
+}
+
+.list-expenses .edit-btn,
+.list-expenses .delete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-secondary-text);
+  font-size: 1.1rem;
+  padding: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.list-expenses .delete-btn:hover {
+  color: var(--color-expense);
+}
+
+.list-expenses .edit-btn:hover {
+  color: var(--color-accent);
+}
+
+/* === Diagrams === */
+.diagrams {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pie-chart,
+.bar-chart {
+  flex: 1;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: var(--shadow-elevated);
+}
+
+.up{
+  color: green;
+}
+
+.down{
+  color: red;
+}
+
+.neutral{
+  color: gray;
+}
